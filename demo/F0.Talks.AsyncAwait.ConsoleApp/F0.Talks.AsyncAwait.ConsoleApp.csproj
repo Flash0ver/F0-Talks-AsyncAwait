@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\F0.Talks.AsyncAwait.NuGet\F0.Talks.AsyncAwait.NuGet.csproj" />
+    <ProjectReference Include="..\F0.Talks.AsyncAwait\F0.Talks.AsyncAwait.csproj" />
+  </ItemGroup>
+
+</Project>
