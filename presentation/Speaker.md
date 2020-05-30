@@ -9,7 +9,6 @@
 * C# since 2012
 * .NET since 2013
 * async/await since 2015
-* Developer @ [Quaternity Services AT GmbH](http://www.quaternity.ch/)
 
 #### Alter egos
 * Twitter: [@0x_F0](https://twitter.com/0x_F0)
