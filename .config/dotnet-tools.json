@@ -2,8 +2,8 @@
   "version": 1,
   "isRoot": true,
   "tools": {
-    "dotnet-try": {
-      "version": "1.0.19317.5",
+    "microsoft.dotnet-try": {
+      "version": "1.0.20403.1",
       "commands": [
         "dotnet-try"
       ]
