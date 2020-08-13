@@ -9,10 +9,10 @@
 ```cs --project .\Snippets\Snippets.csproj --source-file .\Snippets\ContinuationDemo.cs --region AwaitTheResult
 ```
 
-```cs --project .\Snippets\Snippets.csproj --source-file .\Snippets\ContinuationDemo.cs --region Combinators1
+```cs --project .\Snippets\Snippets.csproj --source-file .\Snippets\ContinuationDemo.cs --region Combinators_All
 ```
 
-```cs --project .\Snippets\Snippets.csproj --source-file .\Snippets\ContinuationDemo.cs --region Combinators2
+```cs --project .\Snippets\Snippets.csproj --source-file .\Snippets\ContinuationDemo.cs --region Combinators_Any
 ```
 
 ### Continuation options

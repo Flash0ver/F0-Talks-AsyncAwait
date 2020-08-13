@@ -36,8 +36,8 @@ namespace Snippets
         }
         #endregion
 
-        #region Combinators1
-        public static async Task Combinators1()
+        #region Combinators_All
+        public static async Task Combinators_All()
         {
             Task<string> groupTask = GetTitleAsync("https://www.meetup.com/dotnet-austria/");
             Task<string> eventTask = GetTitleAsync("https://www.meetup.com/dotnet-austria/events/263414974/");
@@ -52,8 +52,8 @@ namespace Snippets
         }
         #endregion
 
-        #region Combinators2
-        public static async Task Combinators2()
+        #region Combinators_Any
+        public static async Task Combinators_Any()
         {
             Task<string> groupTask = GetTitleAsync("https://www.meetup.com/dotnet-austria/");
             Task<string> eventTask = GetTitleAsync("https://www.meetup.com/dotnet-austria/events/263414974/");
@@ -65,20 +65,28 @@ namespace Snippets
         }
         #endregion
 
-        private static async Task<string> GetTitleAsync()
+        private static Task<string> GetTitleAsync()
         {
-            const string address = "https://www.meetup.com/dotnet-austria/events/263414974/";
-            IConfiguration config = Configuration.Default.WithDefaultLoader();
-            IBrowsingContext context = BrowsingContext.New(config);
-            IDocument document = await context.OpenAsync(address);
-            return document.Title;
+            return GetTitleAsync("https://www.meetup.com/dotnet-austria/events/263414974/", TimeSpan.Zero);
         }
 
-        private static async Task<string> GetTitleAsync(string address)
+        private static Task<string> GetTitleAsync(string address)
+        {
+            return GetTitleAsync(address, TimeSpan.Zero);
+        }
+
+        private static Task<string> GetTitleAsync(string address, int delay)
+        {
+            return GetTitleAsync(address, TimeSpan.FromMilliseconds(delay));
+        }
+
+        private static async Task<string> GetTitleAsync(string address, TimeSpan delay)
         {
             IConfiguration config = Configuration.Default.WithDefaultLoader();
             IBrowsingContext context = BrowsingContext.New(config);
             IDocument document = await context.OpenAsync(address);
+
+            await Task.Delay(delay);
             return document.Title;
         }
 
