@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Linq;
+using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Snippets
@@ -23,6 +26,18 @@ namespace Snippets
             throw new InvalidOperationException(nameof(ThrowImmediately));
         }
 
+        private static async Task WriteAsync(object obj)
+        {
+            if (obj is null)
+            {
+                throw new ArgumentNullException(nameof(obj));
+            }
+
+            await Task.Yield();
+
+            Console.WriteLine($"ToString: {obj}");
+        }
+
         private static void WriteTaskInfo(Task task)
         {
             Console.WriteLine("---");
@@ -37,7 +52,7 @@ namespace Snippets
         }
         #endregion
 
-        #region Exception_Code
+        #region Exception_Asynchronous
         public static Task FailAsync()
         {
             Task task = ThrowAsync();
@@ -59,17 +74,32 @@ namespace Snippets
             WriteTaskInfo(task);
             return Task.CompletedTask;
         }
+        #endregion
 
-        private static async Task WriteAsync(object obj)
+        #region Exception_Synchronous
+        public static async Task FailSync()
         {
-            if (obj is null)
+            Task<int> task = GetRandomNumberAsync(new HttpClient());
+
+            Console.WriteLine($"{nameof(task.Status)}: {task.Status}");
+            int number = await task;
+
+            Console.WriteLine(number);
+        }
+
+        private static async Task<int> GetRandomNumberAsync(HttpClient client)
+        {
+            if (client is null)
             {
-                throw new ArgumentNullException(nameof(obj));
+                throw new ArgumentNullException(nameof(client));
             }
 
-            await Task.Yield();
+            string json = await client.GetStringAsync("http://www.randomnumberapi.com/api/v1.0/random?min=0&max=9&count=1");
 
-            Console.WriteLine($"ToString: {obj.ToString()}");
+            using JsonDocument document = JsonDocument.Parse(json);
+            JsonElement root = document.RootElement;
+            JsonElement number = root.EnumerateArray().Single();
+            return number.GetInt32();
         }
         #endregion
     }

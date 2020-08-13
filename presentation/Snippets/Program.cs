@@ -33,7 +33,8 @@ namespace Snippets
                 "Hidden_AsyncVoid" => PitfallDemo.AsyncVoid(),
                 "UnnecessaryContinuation" => PitfallDemo.ContinuationMethod(),
                 "UnnecessaryThreadPool" => PitfallDemo.CreateTask(),
-                "Exception_Code" => ExceptionDemo.FailAsync(),
+                "Exception_Asynchronous" => ExceptionDemo.FailAsync(),
+                "Exception_Synchronous" => ExceptionDemo.FailSync(),
 
                 "Task_Void" => TplDemo.Get_Task_Void(),
                 "Task_TResult" => TplDemo.Get_Task_TResult(),

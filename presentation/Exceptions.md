@@ -3,7 +3,11 @@
 ```cs --project .\Snippets\Snippets.csproj --source-file .\Snippets\ExceptionDemo.cs --region Exception_Setup
 ```
 
-```cs --project .\Snippets\Snippets.csproj --source-file .\Snippets\ExceptionDemo.cs --region Exception_Code
+```cs --project .\Snippets\Snippets.csproj --source-file .\Snippets\ExceptionDemo.cs --region Exception_Asynchronous
+```
+
+## Fail fast: throw and observe exceptions synchronously
+```cs --project .\Snippets\Snippets.csproj --source-file .\Snippets\ExceptionDemo.cs --region Exception_Synchronous
 ```
 
 ---
