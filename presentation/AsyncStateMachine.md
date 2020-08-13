@@ -2,6 +2,9 @@
 
 compiler-generated state machine
 
+> ...there is no spoon.
+(Spoon Boy, The Matrix, 1999)
+
 ### MoveNext
 
 ```cs --project .\Snippets\Snippets.csproj --source-file .\Snippets\ThrowDemo.cs --region Throw

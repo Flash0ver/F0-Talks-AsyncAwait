@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace Snippets
 {
@@ -16,7 +17,7 @@ namespace Snippets
             Task task = region switch
             {
                 "ControlFlow" => TapDemo.WriteTitleAsync(),
-                "AsyncStateMachine" => AsyncStateMachineDemo.MethodAsync(),
+                "AsyncStateMachine" => AsyncStateMachineDemo.MethodAsync(TimeSpan.FromSeconds(2)),
                 "Throw" => ThrowDemo.ThrowAsync(),
                 "AsyncLock" => new AsyncLockDemo().AccessSharedResourceAsync(),
                 "Cancellation_Operation" => CancellationDemo.Caller(),
