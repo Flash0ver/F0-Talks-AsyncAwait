@@ -11,6 +11,7 @@ The contextual keyword [async][async] modifies a
 * method
 * lambda expression
 * anonymous method
+
 to be asynchronous, referred to as an _async method_.
 
 In all other contexts, it's an identifier.
