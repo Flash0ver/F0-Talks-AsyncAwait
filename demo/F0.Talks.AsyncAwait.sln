@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "F0.Talks.AsyncAwait.MSTest"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "F0.Talks.AsyncAwait.XUnit", "F0.Talks.AsyncAwait.XUnit\F0.Talks.AsyncAwait.XUnit.csproj", "{16FF9D96-0DC9-47B7-B225-4C72DA9823D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F0.Talks.AsyncAwait.NUnit", "F0.Talks.AsyncAwait.NUnit\F0.Talks.AsyncAwait.NUnit.csproj", "{22689F3D-355E-4A74-860F-180C50D515F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "F0.Talks.AsyncAwait.NUnit", "F0.Talks.AsyncAwait.NUnit\F0.Talks.AsyncAwait.NUnit.csproj", "{22689F3D-355E-4A74-860F-180C50D515F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F0.Talks.AsyncAwait.Benchmarks", "F0.Talks.AsyncAwait.Benchmarks\F0.Talks.AsyncAwait.Benchmarks.csproj", "{82450128-6DE0-47B0-9B87-8AE9CADF98E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{22689F3D-355E-4A74-860F-180C50D515F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22689F3D-355E-4A74-860F-180C50D515F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22689F3D-355E-4A74-860F-180C50D515F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82450128-6DE0-47B0-9B87-8AE9CADF98E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82450128-6DE0-47B0-9B87-8AE9CADF98E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82450128-6DE0-47B0-9B87-8AE9CADF98E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82450128-6DE0-47B0-9B87-8AE9CADF98E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
