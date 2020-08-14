@@ -3,7 +3,7 @@ using System;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace F0.Talks.AsyncAwait.XUnit
+namespace F0.Talks.AsyncAwait.Tests.XUnit
 {
     public class UnitTests
     {

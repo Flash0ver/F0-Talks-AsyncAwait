@@ -3,8 +3,9 @@ using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
 
-namespace F0.Talks.AsyncAwait.NUnit
+namespace F0.Talks.AsyncAwait.Tests.NUnit
 {
+    [TestFixture]
     public class Tests
     {
         [Test]

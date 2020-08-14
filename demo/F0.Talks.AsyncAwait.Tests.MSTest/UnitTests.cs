@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading.Tasks;
 
-namespace F0.Talks.AsyncAwait.MSTest
+namespace F0.Talks.AsyncAwait.Tests.MSTest
 {
     [TestClass]
     public class UnitTests
