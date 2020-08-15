@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace F0.Talks.AsyncAwait.Tests.NUnit
 {
     [TestFixture]
-    public class Tests
+    public class UnitTests
     {
         [Test]
         public async Task GetAsync()
