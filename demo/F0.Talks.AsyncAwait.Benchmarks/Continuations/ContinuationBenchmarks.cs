@@ -18,7 +18,7 @@ namespace F0.Talks.AsyncAwait.Benchmarks.Continuations
         }
 
         [Benchmark]
-        public async Task<int> CompletedTask_UnneccessaryAsync()
+        public async Task<int> CompletedTask_UnnecessaryAsync()
         {
             int number = 42;
 
@@ -34,7 +34,7 @@ namespace F0.Talks.AsyncAwait.Benchmarks.Continuations
         }
 
         [Benchmark]
-        public async Task<int> IncompleteTask_UnneccessaryAsync()
+        public async Task<int> IncompleteTask_UnnecessaryAsync()
         {
             int number = 42;
 

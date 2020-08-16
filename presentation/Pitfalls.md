@@ -4,11 +4,11 @@
 ```cs --project .\Snippets\Snippets.csproj --source-file .\Snippets\PitfallDemo.cs --region Hidden_AsyncVoid
 ```
 
-## Unneccessary await
+## Unnecessary await
 ```cs --project .\Snippets\Snippets.csproj --source-file .\Snippets\PitfallDemo.cs --region UnnecessaryContinuation
 ```
 
-## Unneccessary work on thread pool
+## Unnecessary work on thread pool
 ```cs --project .\Snippets\Snippets.csproj --source-file .\Snippets\PitfallDemo.cs --region UnnecessaryThreadPool
 ```
 
