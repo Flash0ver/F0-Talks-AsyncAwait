@@ -85,8 +85,8 @@ namespace Snippets
             bool result2 = await valueTask;
 
             // error: consumed concurrently
-            Task.Run(async () => await valueTask);
-            Task.Run(async () => await valueTask);
+            _ = Task.Run(async () => await valueTask);
+            _ = Task.Run(async () => await valueTask);
 
             // error: IValueTaskSource / IValueTaskSource<TResult> implementations do not need to support blocking until completion
             // that operation may be a race condition
