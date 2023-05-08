@@ -7,7 +7,7 @@
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
 
-    <NoWarn>$(NoWarn);1591</NoWarn>
+    <NoWarn>$(NoWarn);1591</NoWarn><!-- Missing XML comment for publicly visible type or member '*' -->
   </PropertyGroup>
 
   <ItemGroup>

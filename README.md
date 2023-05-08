@@ -17,6 +17,7 @@ My talk on asynchronous programming with async and await in .NET (C#).
 2. `dotnet tool restore` to make the [dotnet-try](https://github.com/dotnet/try/blob/master/DotNetTryLocal.md) local tool available
 3. `dotnet try` to launch the presentation
 ### Scripted
+- `./scripts/Build-Presentation.ps1` - builds the presentation and all of its dependencies
 - `./scripts/Restore-Presentation.ps1` - restores the dependencies and tools of the presentation
 - `./scripts/Start-Presentation.ps1` - runs the presentation
 - `./scripts/Test-Presentation.ps1` - verifies the consistency of the Markdown files

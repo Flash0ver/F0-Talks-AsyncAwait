@@ -3,15 +3,16 @@ using System.Threading.Tasks;
 
 namespace Snippets
 {
-    internal static class Program
+    public static class Program
     {
-        internal static async Task<int> Main(
+        private static async Task<int> Main(
             string? region = null,
             string? session = null,
             string? package = null,
             string? project = null,
             string[]? args = null)
         {
+            #region Main
             //region = "Progress";
 
             Task task = region switch
@@ -70,6 +71,7 @@ namespace Snippets
             await task;
 
             return 0;
+            #endregion
         }
     }
 }
