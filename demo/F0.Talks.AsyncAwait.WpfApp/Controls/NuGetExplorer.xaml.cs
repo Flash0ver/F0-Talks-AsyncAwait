@@ -2,6 +2,7 @@
 using F0.Talks.AsyncAwait.NuGet.Services;
 using F0.Talks.AsyncAwait.WpfApp.Awaitables;
 using System;
+using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,12 +22,13 @@ namespace F0.Talks.AsyncAwait.WpfApp.Controls
         private async void OnGetDownloads(object sender, RoutedEventArgs e)
         {
             string packageId = PackageId.Text;
-            Task<int> task = NuGetService.GetAsync(packageId, true, cts.Token);
+            Task<long> task = NuGetService.GetAsync(packageId, true, cts.Token);
             try
             {
-                int totalDownloads = await task.ConfigureAwait(false);
+                long totalDownloads = await task.ConfigureAwait(false);
                 await this;
-                TotalDownloads.Text = $"{totalDownloads}";
+                string text = String.Create(CultureInfo.InvariantCulture, $"{totalDownloads:N0}");
+                TotalDownloads.Text = text;
             }
             catch (OperationCanceledException ex)
             {

@@ -2,6 +2,7 @@
 using F0.Talks.AsyncAwait.NuGet.Services;
 using F0.Talks.AsyncAwait.Services;
 using System;
+using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -39,9 +40,10 @@ namespace F0.Talks.AsyncAwait.ConsoleApp
         private static async Task WriteNuGetDownloadsAsync()
         {
             string packageId = "Microsoft.Bcl.AsyncInterfaces";
-            Task<int> task = NuGetService.GetAsync(packageId, true, default);
-            int totalDownloads = await task;
-            Console.WriteLine($"NuGet package '{packageId}' has {totalDownloads} total downloads");
+            Task<long> task = NuGetService.GetAsync(packageId, true, default);
+            long totalDownloads = await task;
+            string message = String.Create(CultureInfo.InvariantCulture, $"NuGet package '{packageId}' has {totalDownloads:N0} total downloads");
+            Console.WriteLine(message);
         }
 
         private static void WriteCommandLineArguments(string[] args)

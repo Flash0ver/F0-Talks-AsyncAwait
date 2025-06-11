@@ -28,7 +28,7 @@ namespace F0.Talks.AsyncAwait.NuGet.Http
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<int> GetAsync(string packageId, bool prerelease, CancellationToken cancellationToken)
+        public async Task<long> GetAsync(string packageId, bool prerelease, CancellationToken cancellationToken)
         {
             await Task.CompletedTask.ConfigureAwait(false);
 
@@ -46,7 +46,7 @@ namespace F0.Talks.AsyncAwait.NuGet.Http
             }
 
             JsonElement data = document.RootElement.GetProperty("data").EnumerateArray().Single();
-            int totalDownloads = data.GetProperty("totalDownloads").GetInt32();
+            long totalDownloads = data.GetProperty("totalDownloads").GetInt64();
 
             return totalDownloads;
         }
