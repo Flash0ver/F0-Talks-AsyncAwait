@@ -6,7 +6,8 @@
       "version": "1.0.21418.2",
       "commands": [
         "dotnet-try"
-      ]
+      ],
+      "rollForward": false
     }
   }
 }
