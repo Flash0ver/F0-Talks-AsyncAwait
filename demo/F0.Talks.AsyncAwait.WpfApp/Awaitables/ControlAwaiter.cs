@@ -2,27 +2,26 @@
 using System.Runtime.CompilerServices;
 using System.Windows.Controls;
 
-namespace F0.Talks.AsyncAwait.WpfApp.Awaitables
+namespace F0.Talks.AsyncAwait.WpfApp.Awaitables;
+
+public struct ControlAwaiter : INotifyCompletion
 {
-    public struct ControlAwaiter : INotifyCompletion
+    private readonly Control _control;
+
+    public ControlAwaiter(Control control)
     {
-        private readonly Control control;
+        _control = control;
+    }
 
-        public ControlAwaiter(Control control)
-        {
-            this.control = control;
-        }
+    public bool IsCompleted => _control.Dispatcher.CheckAccess();
 
-        public bool IsCompleted => control.Dispatcher.CheckAccess();
+    public void OnCompleted(Action continuation)
+    {
+        _control.Dispatcher.Invoke(continuation);
+    }
 
-        public void OnCompleted(Action continuation)
-        {
-            control.Dispatcher.Invoke(continuation);
-        }
-
-        public void GetResult()
-        {
-            //no-op
-        }
+    public void GetResult()
+    {
+        //no-op
     }
 }

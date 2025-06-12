@@ -3,23 +3,22 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
-namespace F0.Talks.AsyncAwait.Awaitables
+namespace F0.Talks.AsyncAwait.Awaitables;
+
+public static class AwaiterExtensions
 {
-    public static class AwaiterExtensions
+    public static TaskAwaiter GetAwaiter(this TimeSpan timeSpan)
     {
-        public static TaskAwaiter GetAwaiter(this TimeSpan timeSpan)
-        {
-            return Task.Delay(timeSpan).GetAwaiter();
-        }
+        return Task.Delay(timeSpan).GetAwaiter();
+    }
 
-        public static TaskAwaiter GetAwaiter(this int milliseconds)
-        {
-            return Task.Delay(TimeSpan.FromMilliseconds(milliseconds)).GetAwaiter();
-        }
+    public static TaskAwaiter GetAwaiter(this int milliseconds)
+    {
+        return Task.Delay(TimeSpan.FromMilliseconds(milliseconds)).GetAwaiter();
+    }
 
-        public static TaskAwaiter GetAwaiter(this IEnumerable<Task> tasks)
-        {
-            return Task.WhenAll(tasks).GetAwaiter();
-        }
+    public static TaskAwaiter GetAwaiter(this IEnumerable<Task> tasks)
+    {
+        return Task.WhenAll(tasks).GetAwaiter();
     }
 }

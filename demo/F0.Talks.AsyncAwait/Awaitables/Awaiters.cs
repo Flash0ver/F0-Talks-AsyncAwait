@@ -1,10 +1,9 @@
-﻿namespace F0.Talks.AsyncAwait.Awaitables
+﻿namespace F0.Talks.AsyncAwait.Awaitables;
+
+public static class Awaiters
 {
-    public static class Awaiters
+    public static DetachSynchronizationContextAwaiter DetachCurrentSyncContext()
     {
-        public static DetachSynchronizationContextAwaiter DetachCurrentSyncContext()
-        {
-            return new DetachSynchronizationContextAwaiter();
-        }
+        return new DetachSynchronizationContextAwaiter();
     }
 }

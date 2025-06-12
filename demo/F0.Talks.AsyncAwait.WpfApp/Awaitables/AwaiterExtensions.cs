@@ -1,12 +1,11 @@
 ﻿using System.Windows.Controls;
 
-namespace F0.Talks.AsyncAwait.WpfApp.Awaitables
+namespace F0.Talks.AsyncAwait.WpfApp.Awaitables;
+
+internal static class AwaiterExtensions
 {
-    internal static class AwaiterExtensions
+    public static ControlAwaiter GetAwaiter(this Control control)
     {
-        public static ControlAwaiter GetAwaiter(this Control control)
-        {
-            return new ControlAwaiter(control);
-        }
+        return new ControlAwaiter(control);
     }
 }

@@ -1,9 +1,8 @@
-﻿namespace F0.Talks.AsyncAwait.WpfApp
+﻿namespace F0.Talks.AsyncAwait.WpfApp;
+
+internal sealed class MainViewModel
 {
-    internal sealed class MainViewModel
+    public MainViewModel()
     {
-        public MainViewModel()
-        {
-        }
     }
 }

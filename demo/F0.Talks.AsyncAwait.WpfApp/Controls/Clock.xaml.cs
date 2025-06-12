@@ -1,12 +1,11 @@
 ﻿using System.Windows.Controls;
 
-namespace F0.Talks.AsyncAwait.WpfApp.Controls
+namespace F0.Talks.AsyncAwait.WpfApp.Controls;
+
+public partial class Clock : UserControl
 {
-    public partial class Clock : UserControl
+    public Clock()
     {
-        public Clock()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace F0.Talks.AsyncAwait.Services
+namespace F0.Talks.AsyncAwait.Services;
+
+public static class ExceptionService
 {
-    public static class ExceptionService
+    public static Task ThrowImmediately()
     {
-        public static Task ThrowImmediately()
-        {
-            throw new InvalidOperationException(nameof(ThrowImmediately));
-        }
+        throw new InvalidOperationException(nameof(ThrowImmediately));
+    }
 
-        public static async Task ThrowAsync()
-        {
-            await Task.Yield();
+    public static async Task ThrowAsync()
+    {
+        await Task.Yield();
 
-            throw new InvalidOperationException(nameof(ThrowAsync));
-        }
+        throw new InvalidOperationException(nameof(ThrowAsync));
     }
 }

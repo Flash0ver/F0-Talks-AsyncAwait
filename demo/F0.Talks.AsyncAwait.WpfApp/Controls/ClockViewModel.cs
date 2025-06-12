@@ -2,40 +2,39 @@
 using System;
 using System.Windows.Threading;
 
-namespace F0.Talks.AsyncAwait.WpfApp.Controls
+namespace F0.Talks.AsyncAwait.WpfApp.Controls;
+
+internal sealed class ClockViewModel : ViewModel, IDisposable
 {
-    internal sealed class ClockViewModel : ViewModel, IDisposable
+    private readonly DispatcherTimer _timer;
+
+    private string _time;
+    public string Time
     {
-        private readonly DispatcherTimer timer;
+        get => _time;
+        set => SetProperty(ref _time, value);
+    }
 
-        private string time;
-        public string Time
+    public ClockViewModel()
+    {
+        _time = DateTime.Now.ToLongTimeString();
+
+        _timer = new DispatcherTimer
         {
-            get => time;
-            set => SetProperty(ref time, value);
-        }
+            Interval = TimeSpan.FromSeconds(0.5)
+        };
+        _timer.Tick += OnTimerTick;
+        _timer.Start();
+    }
 
-        public ClockViewModel()
-        {
-            time = DateTime.Now.ToLongTimeString();
+    private void OnTimerTick(object? sender, EventArgs e)
+    {
+        Time = DateTime.Now.ToLongTimeString();
+    }
 
-            timer = new DispatcherTimer
-            {
-                Interval = TimeSpan.FromSeconds(0.5)
-            };
-            timer.Tick += OnTimerTick;
-            timer.Start();
-        }
-
-        private void OnTimerTick(object? sender, EventArgs e)
-        {
-            Time = DateTime.Now.ToLongTimeString();
-        }
-
-        void IDisposable.Dispose()
-        {
-            timer.Stop();
-            timer.Tick -= OnTimerTick;
-        }
+    void IDisposable.Dispose()
+    {
+        _timer.Stop();
+        _timer.Tick -= OnTimerTick;
     }
 }

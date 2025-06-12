@@ -8,38 +8,36 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace F0.Talks.AsyncAwait.WpfApp.Controls
+namespace F0.Talks.AsyncAwait.WpfApp.Controls;
+
+public partial class NuGetExplorer : UserControl
 {
-    public partial class NuGetExplorer : UserControl
+    private readonly CancellationTokenSource _cts = new();
+
+    public NuGetExplorer()
     {
-        private readonly CancellationTokenSource cts = new CancellationTokenSource();
+        InitializeComponent();
+    }
 
-        public NuGetExplorer()
+    private async void OnGetDownloads(object sender, RoutedEventArgs e)
+    {
+        string packageId = PackageId.Text;
+        Task<long> task = NuGetService.GetAsync(packageId, true, _cts.Token);
+        try
         {
-            InitializeComponent();
+            long totalDownloads = await task.ConfigureAwait(false);
+            string text = String.Create(CultureInfo.InvariantCulture, $"{totalDownloads:N0}");
+            await this;
+            TotalDownloads.Text = text;
         }
-
-        private async void OnGetDownloads(object sender, RoutedEventArgs e)
+        catch (OperationCanceledException ex)
         {
-            string packageId = PackageId.Text;
-            Task<long> task = NuGetService.GetAsync(packageId, true, cts.Token);
-            try
-            {
-                long totalDownloads = await task.ConfigureAwait(false);
-                await this;
-                string text = String.Create(CultureInfo.InvariantCulture, $"{totalDownloads:N0}");
-                TotalDownloads.Text = text;
-            }
-            catch (OperationCanceledException ex)
-            {
-                await Dispatcher.BeginInvoke((Action)(() => TotalDownloads.Text = ex.Message));
-            }
-
+            await Dispatcher.BeginInvoke(delegate () { TotalDownloads.Text = ex.Message; });
         }
+    }
 
-        private void OnCancel(object sender, RoutedEventArgs e)
-        {
-            cts.Cancel();
-        }
+    private void OnCancel(object sender, RoutedEventArgs e)
+    {
+        _cts.Cancel();
     }
 }

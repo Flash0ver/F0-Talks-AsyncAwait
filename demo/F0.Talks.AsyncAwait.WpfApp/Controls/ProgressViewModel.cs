@@ -6,94 +6,93 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace F0.Talks.AsyncAwait.WpfApp.Controls
+namespace F0.Talks.AsyncAwait.WpfApp.Controls;
+
+internal sealed class ProgressViewModel : ViewModel
 {
-    internal sealed class ProgressViewModel : ViewModel
+    private int _maximum;
+    public int Maximum
     {
-        private int maximum;
-        public int Maximum
-        {
-            get => maximum;
-            set => SetProperty(ref maximum, value);
-        }
+        get => _maximum;
+        set => SetProperty(ref _maximum, value);
+    }
 
-        private int progress;
-        public int Progress
-        {
-            get => progress;
-            set => SetProperty(ref progress, value);
-        }
+    private int _progress;
+    public int Progress
+    {
+        get => _progress;
+        set => SetProperty(ref _progress, value);
+    }
 
-        private CancellationTokenSource? cts;
-        private CancellationTokenSource? CTS
+    private CancellationTokenSource? _cts;
+    private CancellationTokenSource? CTS
+    {
+        get => _cts;
+        set
         {
-            get => cts;
-            set
+            if (TrySetProperty(ref _cts, value))
             {
-                if (TrySetProperty(ref cts, value))
-                {
-                    StartCommand.RaiseCanExecuteChanged();
-                    CancelCommand.RaiseCanExecuteChanged();
-                }
+                StartCommand.RaiseCanExecuteChanged();
+                CancelCommand.RaiseCanExecuteChanged();
             }
         }
+    }
 
-        public IAsyncCommand StartCommand { get; }
-        public IInputCommand CancelCommand { get; }
+    public IAsyncCommand StartCommand { get; }
+    public IInputCommand CancelCommand { get; }
 
-        public ProgressViewModel()
+    public ProgressViewModel()
+    {
+        StartCommand = Command.Create(OnStart, CanStart);
+        CancelCommand = Command.Create(OnCancel, CanCancel);
+    }
+
+    private async Task OnStart()
+    {
+        Progress = 0;
+        CTS = new CancellationTokenSource();
+        IProgress<int> reporter = new Progress<int>(p => Progress = p);
+        try
         {
-            StartCommand = Command.Create(OnStart, CanStart);
-            CancelCommand = Command.Create(OnCancel, CanCancel);
+            await ProcessAsyncSequence(CreateAsyncSequence(), CTS.Token, reporter);
         }
-
-        private async Task OnStart()
+        catch (TaskCanceledException)
         {
-            Progress = 0;
-            CTS = new CancellationTokenSource();
-            IProgress<int> reporter = new Progress<int>(p => Progress = p);
-            try
-            {
-                await ProcessAsyncSequence(CreateAsyncSequence(), CTS.Token, reporter);
-            }
-            catch (TaskCanceledException)
-            {
-                reporter.Report(0);
-            }
-            CTS = null;
+            reporter.Report(0);
         }
+        CTS = null;
+    }
 
-        private bool CanStart()
+    private bool CanStart()
+    {
+        return CTS == null;
+    }
+
+    private void OnCancel()
+    {
+        CTS!.Cancel();
+    }
+
+    private bool CanCancel()
+    {
+        return CTS != null;
+    }
+
+    private IAsyncEnumerable<int> CreateAsyncSequence()
+    {
+        Maximum = 5;
+        return AsyncEnumerable.Range(0, 5);
+    }
+
+    private static async Task ProcessAsyncSequence(IAsyncEnumerable<int> asyncSequence, CancellationToken cancellationToken, IProgress<int> progress)
+    {
+        int current = 0;
+
+        await foreach (int item in asyncSequence.WithCancellation(cancellationToken))
         {
-            return CTS == null;
-        }
-
-        private void OnCancel()
-        {
-            CTS!.Cancel();
-        }
-
-        private bool CanCancel()
-        {
-            return CTS != null;
-        }
-
-        private IAsyncEnumerable<int> CreateAsyncSequence()
-        {
-            Maximum = 5;
-            return AsyncEnumerable.Range(0, 5);
-        }
-
-        private static async Task ProcessAsyncSequence(IAsyncEnumerable<int> asyncSequence, CancellationToken cancellationToken, IProgress<int> progress)
-        {
-            int current = 0;
-
-            await foreach (int item in asyncSequence)
-            {
-                current++;
-                await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
-                progress.Report(current);
-            }
+            current++;
+            await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
+            progress.Report(current);
         }
     }
 }
