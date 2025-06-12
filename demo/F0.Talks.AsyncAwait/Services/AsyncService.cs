@@ -2,39 +2,39 @@
 
 public static class AsyncService
 {
-    public static async Task WriteAsync()
+    public static async Task WriteAsync(CancellationToken cancellationToken)
     {
         Console.WriteLine("Enter");
         var sw = Stopwatch.StartNew();
 
-        await Task.Delay(TimeSpan.FromSeconds(0));
+        await Task.Delay(TimeSpan.FromSeconds(0), cancellationToken);
         Console.WriteLine($"After {sw.Elapsed}");
 
-        await Task.Delay(TimeSpan.FromSeconds(2));
+        await Task.Delay(TimeSpan.FromSeconds(2), cancellationToken);
         Console.WriteLine($"After {sw.Elapsed}");
 
-        await Task.Delay(TimeSpan.FromSeconds(3));
+        await Task.Delay(TimeSpan.FromSeconds(3), cancellationToken);
         Console.WriteLine($"After {sw.Elapsed}");
 
-        await Task.Delay(TimeSpan.FromSeconds(2));
+        await Task.Delay(TimeSpan.FromSeconds(2), cancellationToken);
         Console.WriteLine($"Exit after {sw.Elapsed}");
     }
 
-    public static async Task WriteDetailedAsync()
+    public static async Task WriteDetailedAsync(CancellationToken cancellationToken)
     {
         WriteThreadInfo("Enter");
         var sw = Stopwatch.StartNew();
 
-        await Task.Delay(TimeSpan.FromSeconds(0));
+        await Task.Delay(TimeSpan.FromSeconds(0), cancellationToken);
         WriteThreadInfo($"After {sw.Elapsed}");
 
-        await Task.Delay(TimeSpan.FromSeconds(2));
+        await Task.Delay(TimeSpan.FromSeconds(2), cancellationToken);
         WriteThreadInfo($"After {sw.Elapsed}");
 
-        await Task.Delay(TimeSpan.FromSeconds(3));
+        await Task.Delay(TimeSpan.FromSeconds(3), cancellationToken);
         WriteThreadInfo($"After {sw.Elapsed}");
 
-        await Task.Delay(TimeSpan.FromSeconds(2));
+        await Task.Delay(TimeSpan.FromSeconds(2), cancellationToken);
         WriteThreadInfo($"Exit after {sw.Elapsed}");
     }
 
