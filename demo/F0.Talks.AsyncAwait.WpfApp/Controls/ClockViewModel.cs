@@ -1,5 +1,4 @@
 ﻿using F0.ComponentModel;
-using System;
 using System.Windows.Threading;
 
 namespace F0.Talks.AsyncAwait.WpfApp.Controls;

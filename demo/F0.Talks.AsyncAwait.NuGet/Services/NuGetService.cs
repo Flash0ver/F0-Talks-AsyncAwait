@@ -1,6 +1,4 @@
 ﻿using F0.Talks.AsyncAwait.NuGet.Http;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace F0.Talks.AsyncAwait.NuGet.Services;
 

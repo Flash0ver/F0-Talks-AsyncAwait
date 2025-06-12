@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace F0.Talks.AsyncAwait.Diagnostics;
+﻿namespace F0.Talks.AsyncAwait.Diagnostics;
 
 public static class AsyncProcess
 {

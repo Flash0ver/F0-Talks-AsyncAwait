@@ -1,10 +1,7 @@
 ﻿using F0.Talks.AsyncAwait.Awaitables;
 using F0.Talks.AsyncAwait.NuGet.Services;
 using F0.Talks.AsyncAwait.Services;
-using System;
 using System.Globalization;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace F0.Talks.AsyncAwait.ConsoleApp;
 

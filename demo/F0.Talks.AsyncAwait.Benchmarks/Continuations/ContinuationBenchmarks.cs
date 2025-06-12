@@ -1,9 +1,4 @@
-﻿using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Columns;
-using BenchmarkDotNet.Configs;
-using System.Threading.Tasks;
-
-namespace F0.Talks.AsyncAwait.Benchmarks.Continuations;
+﻿namespace F0.Talks.AsyncAwait.Benchmarks.Continuations;
 
 [MemoryDiagnoser]
 [Config(typeof(ContinuationConfig))]

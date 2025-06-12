@@ -1,10 +1,5 @@
 ﻿using F0.ComponentModel;
 using F0.Windows.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace F0.Talks.AsyncAwait.WpfApp.Controls;
 

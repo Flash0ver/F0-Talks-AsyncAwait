@@ -1,3 +1,1 @@
-﻿using Xunit;
-
-[assembly: CollectionBehavior(CollectionBehavior.CollectionPerClass)]
+﻿[assembly: CollectionBehavior(CollectionBehavior.CollectionPerClass)]

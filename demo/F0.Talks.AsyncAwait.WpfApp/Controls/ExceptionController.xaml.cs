@@ -1,6 +1,4 @@
 ﻿using F0.Talks.AsyncAwait.Services;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace F0.Talks.AsyncAwait.WpfApp.Controls;
 

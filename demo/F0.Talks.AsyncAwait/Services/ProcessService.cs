@@ -1,8 +1,4 @@
 ﻿using F0.Talks.AsyncAwait.Diagnostics;
-using System;
-using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace F0.Talks.AsyncAwait.Services;
 

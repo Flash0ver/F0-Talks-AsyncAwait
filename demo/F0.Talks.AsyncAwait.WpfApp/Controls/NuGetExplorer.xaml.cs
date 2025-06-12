@@ -1,12 +1,6 @@
-﻿using F0.Talks.AsyncAwait.Awaitables;
-using F0.Talks.AsyncAwait.NuGet.Services;
+﻿using F0.Talks.AsyncAwait.NuGet.Services;
 using F0.Talks.AsyncAwait.WpfApp.Awaitables;
-using System;
 using System.Globalization;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace F0.Talks.AsyncAwait.WpfApp.Controls;
 

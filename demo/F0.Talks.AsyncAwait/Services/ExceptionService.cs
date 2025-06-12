@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace F0.Talks.AsyncAwait.Services;
+﻿namespace F0.Talks.AsyncAwait.Services;
 
 public static class ExceptionService
 {

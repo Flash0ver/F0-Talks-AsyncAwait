@@ -1,7 +1,4 @@
 using F0.Talks.AsyncAwait.Services;
-using System;
-using System.Threading.Tasks;
-using Xunit;
 
 namespace F0.Talks.AsyncAwait.Tests.XUnit;
 

@@ -1,5 +1,4 @@
-﻿using BenchmarkDotNet.Configs;
-using BenchmarkDotNet.Running;
+﻿using BenchmarkDotNet.Running;
 using System.Diagnostics;
 
 namespace F0.Talks.AsyncAwait.Benchmarks;

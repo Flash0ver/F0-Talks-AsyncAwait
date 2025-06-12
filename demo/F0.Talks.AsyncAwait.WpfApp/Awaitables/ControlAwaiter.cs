@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using System.Windows.Controls;
+﻿using System.Runtime.CompilerServices;
 
 namespace F0.Talks.AsyncAwait.WpfApp.Awaitables;
 

@@ -1,7 +1,4 @@
 using F0.Talks.AsyncAwait.Services;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Threading.Tasks;
 
 namespace F0.Talks.AsyncAwait.Tests.MSTest;
 

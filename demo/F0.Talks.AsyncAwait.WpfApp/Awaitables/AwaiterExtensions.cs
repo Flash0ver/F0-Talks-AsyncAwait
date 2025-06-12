@@ -1,6 +1,4 @@
-﻿using System.Windows.Controls;
-
-namespace F0.Talks.AsyncAwait.WpfApp.Awaitables;
+﻿namespace F0.Talks.AsyncAwait.WpfApp.Awaitables;
 
 internal static class AwaiterExtensions
 {
