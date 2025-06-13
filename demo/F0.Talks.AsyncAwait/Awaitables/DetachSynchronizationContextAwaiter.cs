@@ -2,6 +2,7 @@
 
 namespace F0.Talks.AsyncAwait.Awaitables;
 
+[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1815:Override equals and operator equals on value types", Justification = "Demo")]
 public struct DetachSynchronizationContextAwaiter : ICriticalNotifyCompletion
 {
     public bool IsCompleted => SynchronizationContext.Current == null;

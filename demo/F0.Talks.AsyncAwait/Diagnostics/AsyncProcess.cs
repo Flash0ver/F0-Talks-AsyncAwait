@@ -2,8 +2,11 @@
 
 public static class AsyncProcess
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Reliability", "CA2000:Dispose objects before losing scope", Justification = "TODO")]
     public static async Task<ProcessResult> StartAsync(ProcessStartInfo startInfo, CancellationToken cancellationToken = default)
     {
+        ArgumentNullException.ThrowIfNull(startInfo);
+
         startInfo.UseShellExecute = false;
         startInfo.RedirectStandardOutput = true;
         startInfo.RedirectStandardError = true;
@@ -38,7 +41,7 @@ public static class AsyncProcess
 
         await using (cancellationToken.Register((object? state) => processCompletion.TrySetCanceled(cancellationToken), null, false))
         {
-            return await processCompletion.Task;
+            return await processCompletion.Task.ConfigureAwait(false);
         }
 
         void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
@@ -76,7 +79,7 @@ public static class AsyncProcess
 
             process.Exited -= OnProcessExited;
 
-            await Task.WhenAll(standardOutputResults.Task, standardErrorResults.Task);
+            await Task.WhenAll(standardOutputResults.Task, standardErrorResults.Task).ConfigureAwait(false);
 
             ProcessResult result = new(process.ExitCode, standardOutputResults.Task.Result, standardErrorResults.Task.Result);
 

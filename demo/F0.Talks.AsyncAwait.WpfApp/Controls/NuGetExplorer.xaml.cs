@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace F0.Talks.AsyncAwait.WpfApp.Controls;
 
-public partial class NuGetExplorer : UserControl
+public partial class NuGetExplorer : UserControl, IDisposable
 {
     private readonly CancellationTokenSource _cts = new();
 
@@ -33,5 +33,10 @@ public partial class NuGetExplorer : UserControl
     private void OnCancel(object sender, RoutedEventArgs e)
     {
         _cts.Cancel();
+    }
+
+    void IDisposable.Dispose()
+    {
+        _cts.Dispose();
     }
 }

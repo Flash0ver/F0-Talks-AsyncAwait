@@ -10,7 +10,7 @@ public static class ProcessService
 
         Task<ProcessResult> task = AsyncProcess.StartAsync(startInfo, cancellationToken);
 
-        ProcessResult result = await task;
+        ProcessResult result = await task.ConfigureAwait(false);
 
         PrintOutput(result);
         PrintError(result);

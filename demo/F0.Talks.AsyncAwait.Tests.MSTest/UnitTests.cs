@@ -18,7 +18,7 @@ public class UnitTests
     {
         Func<Task> act = () => ExceptionService.ThrowAsync();
 
-        InvalidOperationException ex = await Assert.ThrowsExceptionAsync<InvalidOperationException>(act);
+        InvalidOperationException ex = await Assert.ThrowsExactlyAsync<InvalidOperationException>(act);
         Assert.AreEqual("ThrowAsync", ex.Message);
     }
 }

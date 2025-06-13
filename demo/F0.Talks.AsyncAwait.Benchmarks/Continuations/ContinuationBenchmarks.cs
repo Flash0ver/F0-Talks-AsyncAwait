@@ -47,7 +47,7 @@ public class ContinuationBenchmarks
         return number;
     }
 
-    private class ContinuationConfig : ManualConfig
+    private sealed class ContinuationConfig : ManualConfig
     {
         public ContinuationConfig()
         {

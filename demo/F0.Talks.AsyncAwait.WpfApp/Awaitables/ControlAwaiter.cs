@@ -2,7 +2,7 @@
 
 namespace F0.Talks.AsyncAwait.WpfApp.Awaitables;
 
-public struct ControlAwaiter : INotifyCompletion
+internal readonly struct ControlAwaiter : INotifyCompletion
 {
     private readonly Control _control;
 

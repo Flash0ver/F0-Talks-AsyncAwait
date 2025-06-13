@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <AnalysisLevel>9</AnalysisLevel>
+    <AnalysisMode>All</AnalysisMode>
+    <NoWarn>$(NoWarn);CA1303;CA1840;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <UseArtifactsOutput>true</UseArtifactsOutput>
     <ArtifactsPath>$(MSBuildThisFileDirectory)../artifacts</ArtifactsPath>
   </PropertyGroup>

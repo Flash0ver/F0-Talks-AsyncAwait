@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace F0.Talks.AsyncAwait.ConsoleApp.Runtime;
 
-public sealed class ConsoleLifetime : IDisposable
+internal sealed class ConsoleLifetime : IDisposable
 {
     private readonly PosixSignalRegistration _sigInt;
     private readonly PosixSignalRegistration _sigQuit;

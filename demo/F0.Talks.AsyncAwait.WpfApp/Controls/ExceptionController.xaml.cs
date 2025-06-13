@@ -16,6 +16,6 @@ public partial class ExceptionController : UserControl
 
     private async void OnThrowAsynchronously(object sender, RoutedEventArgs e)
     {
-        await ExceptionService.ThrowAsync();
+        await ExceptionService.ThrowAsync().ConfigureAwait(true);
     }
 }

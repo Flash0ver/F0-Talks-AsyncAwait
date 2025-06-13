@@ -8,7 +8,7 @@ public static class NuGetService
     {
         using var client = new NuGetClient();
 
-        long downloads = await client.GetAsync(packageId, prerelease, cancellationToken);
+        long downloads = await client.GetAsync(packageId, prerelease, cancellationToken).ConfigureAwait(false);
 
         return downloads;
     }

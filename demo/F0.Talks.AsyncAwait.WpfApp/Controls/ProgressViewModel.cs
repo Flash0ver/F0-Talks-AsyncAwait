@@ -49,7 +49,7 @@ internal sealed class ProgressViewModel : ViewModel
         IProgress<int> reporter = new Progress<int>(p => Progress = p);
         try
         {
-            await ProcessAsyncSequence(CreateAsyncSequence(), CTS.Token, reporter);
+            await ProcessAsyncSequence(CreateAsyncSequence(), CTS.Token, reporter).ConfigureAwait(true);
         }
         catch (TaskCanceledException)
         {
@@ -86,7 +86,7 @@ internal sealed class ProgressViewModel : ViewModel
         await foreach (int item in asyncSequence.WithCancellation(cancellationToken))
         {
             current++;
-            await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
+            await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken).ConfigureAwait(true);
             progress.Report(current);
         }
     }
